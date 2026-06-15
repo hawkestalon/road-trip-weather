@@ -1,0 +1,22 @@
+{
+  "name": "weather-directions",
+  "version": "0.0.1",
+  "description": "Get weather information for your drive.",
+  "main": "build/index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "dev": "nodemon --watch src --ext ts --exec ts-node src/index.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.3",
+    "nodemon": "^3.1.14",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.0"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "fastify": "^5.8.5"
+  }
+}
