@@ -1,4 +1,4 @@
-export type GridInfo = { 
+export type GridInfo = {
   station: string;
-  grid: { x: number, y: number }
-}
+  grid: { x: number; y: number };
+};

@@ -1,13 +1,13 @@
-import "dotenv/config";
-import Fastify from "fastify";
+import 'dotenv/config';
+import Fastify from 'fastify';
 
-import tripsPlugin from "./trips/plugin";
+import tripsPlugin from './trips/plugin';
 
 const server = Fastify();
 
 server.register(tripsPlugin);
 
-server.get("/ping", async () => {
+server.get('/ping', async () => {
   return { pong: true };
 });
 

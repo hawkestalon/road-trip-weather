@@ -1,27 +1,18 @@
-import { FastifyInstance, FastifyRequest, FastifyReply } from "fastify";
-import { getWeatherForTrip } from "./service";
+import { FastifyInstance } from 'fastify';
+import { getWeatherForTrip } from './service';
+import { tripInfoSchema } from './schema';
+import { routeOptions } from '../types';
 
-const tripsHandler = {
-  async handler(request: FastifyRequest, reply: FastifyReply) {
-    const response = await getWeatherForTrip(
-    {
-      city: 'Laramie',
-      state: 'WY',
-      country: 'US'
-    },
-      {
-      street: '543 west 100 south',
-      city: 'Logan',
-      state: 'Utah',
-      postalCode: '84321',
-      country: 'US'
-    });
+const tripsHandler = routeOptions({
+  schema: tripInfoSchema,
+  async handler(request, reply) {
+    const response = await getWeatherForTrip(request.body.start, request.body.destination);
     return reply.send({ response });
-  }
-}
+  },
+});
 
 const tripsPlugin = async (fastify: FastifyInstance) => {
-  fastify.get('/trips', tripsHandler);
-}
+  fastify.post('/trips', tripsHandler);
+};
 
-export default tripsPlugin
+export default tripsPlugin;
