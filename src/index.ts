@@ -1,9 +1,12 @@
 import 'dotenv/config';
 import Fastify from 'fastify';
+import cors from '@fastify/cors';
 
 import tripsPlugin from './trips/plugin';
 
 const server = Fastify();
+
+server.register(cors, {origin: true });
 
 server.register(tripsPlugin);
 
